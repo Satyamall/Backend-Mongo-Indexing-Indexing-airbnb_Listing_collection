@@ -10,6 +10,7 @@ the time difference between the queries:
 Actual Query Execution Time (ms):0
 FETCH - Execution time 0ms.
 IXSCAN - Execution time 0ms.
+![Screenshot (300)](https://user-images.githubusercontent.com/80479635/157243422-43cc5d59-91cc-40d3-b3c1-04f5dbbb14fb.png)
 
 
  
@@ -21,6 +22,7 @@ Actual Query Execution Time (ms):12
 FETCH - Execution time 0ms.
 IXSCAN - Execution time 1ms.
 
+![Screenshot (301)](https://user-images.githubusercontent.com/80479635/157243437-916ea108-aac9-4dd0-ad27-9b4ff78f21bc.png)
 
 ```js
 {price: {$in: [4103,5260,6400]}}
@@ -29,6 +31,7 @@ the time difference between the queries:
 Actual Query Execution Time (ms):0
 FETCH - Execution time 0ms.
 IXSCAN - Execution time 0ms.
+![Screenshot (302)](https://user-images.githubusercontent.com/80479635/157243477-1b5a3334-8644-40d4-b15b-75316f884961.png)
 
 **index the address.country field**
 
@@ -42,6 +45,8 @@ IXSCAN - Execution time 0ms.
 
 Query used the following index:
 price
+![Screenshot (303)](https://user-images.githubusercontent.com/80479635/157243512-92b13645-e239-401a-8ac3-9241ef16fc91.png)
+
 
 ```js
 {'address.country': 'Canada' }
@@ -53,6 +58,7 @@ IXSCAN - Execution time 0ms.
 
 Query used the following index:
 address.country
+![Screenshot (305)](https://user-images.githubusercontent.com/80479635/157243603-98ec2bb1-bab0-4740-934a-c529507206c3.png)
 
 
 ```js
@@ -65,6 +71,7 @@ IXSCAN - Execution time 0ms.
 
 Query used the following index:
 address.price
+![Screenshot (304)](https://user-images.githubusercontent.com/80479635/157243579-94ae5bae-c80a-443a-b64c-a7cd198fdc5a.png)
 
 # part 2
 
@@ -106,17 +113,20 @@ When evaluating the clauses in the $gte expression, MongoDB either performs a co
 ```js
 {property_type: "House"}
 ```
+![Screenshot (306)](https://user-images.githubusercontent.com/80479635/157243679-b5df4a36-2865-4a46-9229-d0f9c2f580cd.png)
 
 # compound Index working like these type of queries
 
 ```js
 {price: {$gte: 4000}}
 ```
+![Screenshot (307)](https://user-images.githubusercontent.com/80479635/157243707-3b7d6856-a43d-4b9a-a765-c1249456cbf4.png)
 
 # apply compound index on 3 fields that are commonly searched in airbnb, and query those fields and sort them to see explain
 ```js
 {price: {$gte: 4000}, property_type: "House", "address.country": "Brazil"}
 ```
+![Screenshot (308)](https://user-images.githubusercontent.com/80479635/157243737-fabe3bbd-4516-40fc-9321-7bccf7eaacc0.png)
 
 
 ```js
@@ -124,4 +134,8 @@ When evaluating the clauses in the $gte expression, MongoDB either performs a co
 
 {price: 1, property_type: -1}
 ```
+![Screenshot (309)](https://user-images.githubusercontent.com/80479635/157243774-1ce2e897-42d3-4ab5-8977-d90ccf3ec19f.png)
+![Screenshot (310)](https://user-images.githubusercontent.com/80479635/157243835-9ad4dfb4-abcf-4ff6-a286-697648c41de2.png)
+![Screenshot (311)](https://user-images.githubusercontent.com/80479635/157243853-7c205dfe-5f51-467b-ba9a-c1573a98d721.png)
+![Screenshot (312)](https://user-images.githubusercontent.com/80479635/157243872-439b0202-a926-45da-a57e-682b80611582.png)
 
